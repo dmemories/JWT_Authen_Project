@@ -2,6 +2,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const authRoute = require('./routes/auth')
+const dataRoute = require('./routes/data')
 require('dotenv').config()
 
 // Initial
@@ -20,6 +21,8 @@ mongoose.connect(process.env.MONGO_CONNECT).then(() => {
 
 // Routes
 app.use('/user', authRoute)
+app.use('/data', dataRoute)
+
 
 app.listen(svPort, () => {
     console.log(LOG_COLOR_INFO, `Server is running on port ${svPort}`)
